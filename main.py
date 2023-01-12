@@ -38,7 +38,6 @@ def catch_them_all():
     ## Creates a dictionary linking computer ID to Uptime EA
     computerUptimeByID = {}
     total_number = (EAinventory['totalCount'])
-    print(total_number)
     number_EA = (len(EAinventory['results'][1]['extensionAttributes']))
     for i in range(0, total_number, 1):
         computerID = str(EAinventory['results'][i]['id'])
@@ -74,34 +73,58 @@ def catch_them_all():
             computer_name = (computerUptimeByID[i]['computer name'])
             hasnotrestartedrecent[t] = {'days up' :days_up, 'computer name' : computer_name}
             t = t +1
-            print(hasnotrestartedrecent)
-    # ## sperates dictionary of hasn't restarted into two lists to be inputted into email function
+    ## sperates dictionary of hasn't restarted into two lists to be inputted into email function
     # for i in hasnotrestartedrecent:
     #     name.append((hasnotrestartedrecent[i]['computer name']).split('-')[0])
     #     up_time.append(hasnotrestartedrecent[i]['days up'])
-    #     print(up_time)
-    # inform_them_all(name, up_time)
+    email_send(hasnotrestartedrecent)
+
+def email_send(hasnotrestartedrecent):
+    print(hasnotrestartedrecent)
 
 
-#Replace with your own gmail account
-cc = []
-message = MIMEMultipart('mixed')
-message['From'] = 'Contact <{sender}>'.format(sender = gmail)
-message['To'] = student_email
-message['Subject'] = 'Hello'
-msg_content = '<h4>Hi There,<br> This is a testing message.</h4>\n'
-body = MIMEText(msg_content, 'html')
-message.attach(body)
-with smtplib.SMTP(smtp_server, smtp_port) as server:
-    server.ehlo()
-    server.starttls(context=context)
-    server.ehlo()
-    server.login(gmail, password)
-    server.sendmail(gmail, student_email.split(";") + (cc.split(";") if cc else []),
-                msg_full)
-    server.quit()
-print("email sent out successfully")
 
+
+
+
+
+
+
+
+catch_them_all()
+
+
+
+
+
+
+
+
+
+
+
+
+
+#
+# #Replace with your own gmail account
+# cc = []
+# message = MIMEMultipart('mixed')
+# message['From'] = 'Contact <{sender}>'.format(sender = gmail)
+# message['To'] = student_email
+# message['Subject'] = 'Hello'
+# msg_content = '<h4>Hi There,<br> This is a testing message.</h4>\n'
+# body = MIMEText(msg_content, 'html')
+# message.attach(body)
+# with smtplib.SMTP(smtp_server, smtp_port) as server:
+#     server.ehlo()
+#     server.starttls(context=context)
+#     server.ehlo()
+#     server.login(gmail, password)
+#     server.sendmail(gmail, student_email.split(";") + (cc.split(";") if cc else []),
+#                 msg_full)
+#     server.quit()
+# print("email sent out successfully")
+#
 
 
 
