@@ -177,7 +177,7 @@ def email_send(computer_records_array):
                         m = email.message.Message()
                         m['From'] = "noreply@cgps.org"
                         m['To'] = email_based_on_computer_name
-                        m['Subject'] = "Your computer may need a restart"
+                        m['Subject'] = "Please restart your computer"
                         body = f"Hello,\n\nThis is an automated email from the CGPS Tech Team. Our records indicate that your computer " \
                                f"has been on for at least {up_time} days.  Computers start to have issues when they are left " \
                                f"on for prolonged periods of time.  To ensure your computer is running well, we strongly recommend that you restart your computer as soon as you can. If you have any questions please email us at support@cgps.org\n\n- CGPS Tech Team"
