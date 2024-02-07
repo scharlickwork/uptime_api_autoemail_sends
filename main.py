@@ -161,6 +161,7 @@ def email_send(computer_records_array):
             try:
                 #excludes any computer with value less than a day or no value
                 if up_time != 'Less then a day' or '':
+                    # logging.info(f' computer name: {computer_name} uptime: {up_time} ')
                     #matches for regex
                     match = re.search(pattern, computer_name)
                     #converts varable to int for comaprison
@@ -189,6 +190,8 @@ def email_send(computer_records_array):
 
     except Exception as e:
         logging.error(f"An unexpected error occurred: {e}")
+
+
 
 
 def main():
